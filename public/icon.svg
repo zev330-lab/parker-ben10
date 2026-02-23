@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle - dark green like the Omnitrix -->
+  <circle cx="256" cy="256" r="256" fill="#111111"/>
+  <circle cx="256" cy="256" r="248" fill="#0a3d0a"/>
+
+  <!-- Outer ring glow -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="#00e500" stroke-width="8" opacity="0.6"/>
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#00e500" stroke-width="3" opacity="0.3"/>
+
+  <!-- Main green circle (Omnitrix face) -->
+  <circle cx="256" cy="256" r="190" fill="#00cc00"/>
+  <circle cx="256" cy="256" r="185" fill="none" stroke="#00ff00" stroke-width="3" opacity="0.5"/>
+
+  <!-- Inner darker ring -->
+  <circle cx="256" cy="256" r="160" fill="#00aa00"/>
+
+  <!-- The Omnitrix hourglass / diamond shape -->
+  <!-- Outer frame of the hourglass -->
+  <polygon points="256,96 336,176 336,196 280,256 336,316 336,336 256,416 176,336 176,316 232,256 176,196 176,176" fill="#004400" stroke="#00ff00" stroke-width="4"/>
+
+  <!-- Top triangle -->
+  <polygon points="256,116 320,180 320,196 272,248 240,248 192,196 192,180" fill="#003300"/>
+
+  <!-- Bottom triangle -->
+  <polygon points="256,396 320,332 320,316 272,264 240,264 192,316 192,332" fill="#003300"/>
+
+  <!-- Center horizontal bar -->
+  <rect x="192" y="240" width="128" height="32" rx="4" fill="#003300"/>
+
+  <!-- Highlight lines on hourglass -->
+  <line x1="220" y1="176" x2="256" y2="140" stroke="#33ff33" stroke-width="2" opacity="0.4"/>
+  <line x1="256" y1="372" x2="292" y2="336" stroke="#33ff33" stroke-width="2" opacity="0.4"/>
+
+  <!-- Glow effect in center -->
+  <circle cx="256" cy="256" r="20" fill="#00ff00" opacity="0.6"/>
+  <circle cx="256" cy="256" r="10" fill="#ccffcc" opacity="0.8"/>
+
+  <!-- Small decorative circles on the face plate -->
+  <circle cx="160" cy="256" r="6" fill="#00ff00" opacity="0.3"/>
+  <circle cx="352" cy="256" r="6" fill="#00ff00" opacity="0.3"/>
+  <circle cx="256" cy="160" r="6" fill="#00ff00" opacity="0.3"/>
+  <circle cx="256" cy="352" r="6" fill="#00ff00" opacity="0.3"/>
+
+  <!-- Metallic rim highlights -->
+  <path d="M 256 8 A 248 248 0 0 1 460 130" fill="none" stroke="#33ff33" stroke-width="3" opacity="0.2"/>
+  <path d="M 52 382 A 248 248 0 0 1 8 256" fill="none" stroke="#33ff33" stroke-width="2" opacity="0.15"/>
+</svg>
