@@ -112,25 +112,31 @@ function App() {
     if (activeMission) startMission(activeMission);
   }, [activeMission, startMission]);
 
+  let content: React.ReactNode = null;
   switch (scene) {
     case 'splash':
-      return <SplashScreen onTap={goMenu} />;
+      content = <SplashScreen onTap={goMenu} />;
+      break;
     case 'menu':
-      return <MainMenu onPlay={goWorldMap} onAliens={goAlienDex} />;
+      content = <MainMenu onPlay={goWorldMap} onAliens={goAlienDex} />;
+      break;
     case 'worldmap':
-      return <WorldMap save={save} onBack={goMenu} onSelectMission={startMission} />;
+      content = <WorldMap save={save} onBack={goMenu} onSelectMission={startMission} />;
+      break;
     case 'aliendex':
-      return <AlienDex save={save} onBack={goMenu} />;
+      content = <AlienDex save={save} onBack={goMenu} />;
+      break;
     case 'playing':
-      return activeMission ? (
+      content = activeMission ? (
         <GameView
           mission={activeMission}
           save={save}
           onLevelComplete={onLevelComplete}
         />
       ) : null;
+      break;
     case 'levelcomplete':
-      return (
+      content = (
         <LevelComplete
           score={lastScore}
           stars={lastStars}
@@ -140,11 +146,21 @@ function App() {
           onWorldMap={goWorldMap}
         />
       );
+      break;
     case 'victory':
-      return <VictoryScreen score={lastScore} onMenu={goMenu} />;
-    default:
-      return null;
+      content = <VictoryScreen score={lastScore} onMenu={goMenu} />;
+      break;
   }
+
+  return (
+    <>
+      <div id="portrait-warning">
+        <span>&#x1F4F1;</span>
+        Turn your phone sideways to play!
+      </div>
+      {content}
+    </>
+  );
 }
 
 export default App;

@@ -55,10 +55,6 @@ export function GameView({ mission, save, onLevelComplete }: Props) {
 
   return (
     <div className="gameview">
-      <div id="portrait-warning">
-        <span>&#x1F4F1;</span>
-        Turn your phone sideways to play!
-      </div>
       <canvas ref={canvasRef} />
 
       {/* HUD overlay */}

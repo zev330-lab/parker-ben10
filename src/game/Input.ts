@@ -21,6 +21,14 @@ export class Input {
   private attackTouchId: number | null = null;
   private specialTouchId: number | null = null;
 
+  // Keyboard state for desktop
+  private keys: Record<string, boolean> = {};
+  private specialKeyPressed = false;
+  private omnitrixKeyPressed = false;
+
+  // Mouse state for desktop
+  private mouseDown = false;
+
   // Joystick visual data for renderer
   joystickActive = false;
   joystickOrigin: Vec2 = { x: 0, y: 0 };
@@ -33,6 +41,8 @@ export class Input {
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
+
+    // Touch events
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.onTouchEnd = this.onTouchEnd.bind(this);
@@ -40,10 +50,46 @@ export class Input {
     canvas.addEventListener('touchmove', this.onTouchMove, { passive: false });
     canvas.addEventListener('touchend', this.onTouchEnd, { passive: false });
     canvas.addEventListener('touchcancel', this.onTouchEnd, { passive: false });
+
+    // Keyboard events for desktop (WASD/arrows + J/K/E)
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
+    window.addEventListener('keydown', this.onKeyDown);
+    window.addEventListener('keyup', this.onKeyUp);
+
+    // Mouse events for desktop
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
+    canvas.addEventListener('mousedown', this.onMouseDown);
+    canvas.addEventListener('mouseup', this.onMouseUp);
+    window.addEventListener('mouseup', this.onMouseUp);
+  }
+
+  private onKeyDown(e: KeyboardEvent) {
+    this.keys[e.key.toLowerCase()] = true;
+    if (e.key.toLowerCase() === 'k' || e.key === ' ') {
+      this.specialKeyPressed = true;
+    }
+    if (e.key.toLowerCase() === 'e' || e.key.toLowerCase() === 'q') {
+      this.omnitrixKeyPressed = true;
+    }
+    // Prevent space from scrolling
+    if (e.key === ' ') e.preventDefault();
+  }
+
+  private onKeyUp(e: KeyboardEvent) {
+    this.keys[e.key.toLowerCase()] = false;
+  }
+
+  private onMouseDown() {
+    this.mouseDown = true;
+  }
+
+  private onMouseUp() {
+    this.mouseDown = false;
   }
 
   private hitTest(x: number, y: number, rect: { x: number; y: number; w: number; h: number }) {
-    // Generous hit area (1.5x)
     const cx = rect.x + rect.w / 2;
     const cy = rect.y + rect.h / 2;
     const hw = rect.w * 0.75;
@@ -60,7 +106,6 @@ export class Input {
       const x = t.clientX - rect.left;
       const y = t.clientY - rect.top;
 
-      // Check buttons first (right side)
       if (this.hitTest(x, y, this.omnitrixBtnRect)) {
         this.omnitrixPressed = true;
         continue;
@@ -76,7 +121,6 @@ export class Input {
         continue;
       }
 
-      // Left half = joystick
       if (x < rect.width * 0.5 && this.moveTouch === null) {
         this.moveTouch = t.identifier;
         this.moveOrigin = { x, y };
@@ -119,6 +163,7 @@ export class Input {
   }
 
   read(): InputState {
+    // Touch joystick
     let mx = 0, my = 0;
     if (this.moveTouch !== null) {
       const dx = this.moveCurrent.x - this.moveOrigin.x;
@@ -131,21 +176,43 @@ export class Input {
       }
     }
 
+    // Keyboard movement (WASD or arrows)
+    if (this.keys['w'] || this.keys['arrowup']) my = -1;
+    if (this.keys['s'] || this.keys['arrowdown']) my = 1;
+    if (this.keys['a'] || this.keys['arrowleft']) mx = -1;
+    if (this.keys['d'] || this.keys['arrowright']) mx = 1;
+    // Normalize diagonal
+    if (mx !== 0 && my !== 0) {
+      const len = Math.sqrt(mx * mx + my * my);
+      mx /= len;
+      my /= len;
+    }
+
+    // Attack: touch button, mouse click, or J key
+    const attackActive = this.attackHeld || this.mouseDown || this.keys['j'] || false;
+
+    // Special: touch button or K/Space key (one-shot)
+    const specialActive = this.specialPressed || this.specialKeyPressed;
+
+    // Omnitrix: touch button or E/Q key (one-shot)
+    const omnitrixActive = this.omnitrixPressed || this.omnitrixKeyPressed;
+
     const state: InputState = {
       move: { x: mx, y: my },
-      attack: this.attackHeld,
-      special: this.specialPressed,
-      omnitrix: this.omnitrixPressed,
+      attack: attackActive,
+      special: specialActive,
+      omnitrix: omnitrixActive,
     };
 
     // Reset one-shot inputs
     this.specialPressed = false;
     this.omnitrixPressed = false;
+    this.specialKeyPressed = false;
+    this.omnitrixKeyPressed = false;
 
     return state;
   }
 
-  /** Update button positions (called by GameView on resize) */
   setButtonRects(
     attack: { x: number; y: number; w: number; h: number },
     special: { x: number; y: number; w: number; h: number },
@@ -161,5 +228,10 @@ export class Input {
     this.canvas.removeEventListener('touchmove', this.onTouchMove);
     this.canvas.removeEventListener('touchend', this.onTouchEnd);
     this.canvas.removeEventListener('touchcancel', this.onTouchEnd);
+    this.canvas.removeEventListener('mousedown', this.onMouseDown);
+    this.canvas.removeEventListener('mouseup', this.onMouseUp);
+    window.removeEventListener('mouseup', this.onMouseUp);
+    window.removeEventListener('keydown', this.onKeyDown);
+    window.removeEventListener('keyup', this.onKeyUp);
   }
 }
