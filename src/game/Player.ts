@@ -25,6 +25,8 @@ export function createPlayer(alienId: AlienId): PlayerState {
     specialCooldown: 0,
     specialMaxCooldown: def.specialAbility.cooldown,
     dashTimer: 0,
+    dashDamage: 0,
+    dashColor: '',
     shieldTimer: 0,
     buffTimer: 0,
     score: 0,
@@ -200,6 +202,8 @@ function fireSpecialAbility(
       player.vel.x = Math.cos(angle) * dashSpeed;
       player.vel.y = Math.sin(angle) * dashSpeed;
       player.dashTimer = ability.duration;
+      player.dashDamage = ability.damage;
+      player.dashColor = ability.color;
       player.invincibleTimer = ability.duration;
       audio.dash();
       break;

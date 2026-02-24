@@ -3,6 +3,8 @@ import type { Scene, SaveData, AlienId, MissionDef } from './types';
 import { WORLDS } from './game/data';
 import { SplashScreen } from './ui/SplashScreen';
 import { MainMenu } from './ui/MainMenu';
+import { GamePicker } from './ui/GamePicker';
+import { ClassicGameView } from './ui/ClassicGameView';
 import { WorldMap } from './ui/WorldMap';
 import { AlienDex } from './ui/AlienDex';
 import { GameView } from './ui/GameView';
@@ -46,6 +48,8 @@ function App() {
   }, []);
 
   const goMenu = useCallback(() => setScene('menu'), []);
+  const goGamePicker = useCallback(() => setScene('gamepicker'), []);
+  const goClassic = useCallback(() => setScene('classic'), []);
   const goWorldMap = useCallback(() => setScene('worldmap'), []);
   const goAlienDex = useCallback(() => setScene('aliendex'), []);
 
@@ -118,7 +122,13 @@ function App() {
       content = <SplashScreen onTap={goMenu} />;
       break;
     case 'menu':
-      content = <MainMenu onPlay={goWorldMap} onAliens={goAlienDex} />;
+      content = <MainMenu onPlay={goGamePicker} onAliens={goAlienDex} />;
+      break;
+    case 'gamepicker':
+      content = <GamePicker onClassic={goClassic} onArena={goWorldMap} onBack={goMenu} />;
+      break;
+    case 'classic':
+      content = <ClassicGameView onBack={goGamePicker} />;
       break;
     case 'worldmap':
       content = <WorldMap save={save} onBack={goMenu} onSelectMission={startMission} />;

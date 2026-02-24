@@ -1,6 +1,6 @@
 import type { MissionDef, AlienId, HudState, GameCallbacks, EnemyState, BossState, SaveData } from '../types';
 import type { ProjectileState } from './Projectile';
-import { ALIEN_DEFS, BOSS_DEFS } from './data';
+import { BOSS_DEFS } from './data';
 import { Input } from './Input';
 import { Camera } from './Camera';
 import { ParticleSystem } from './Particle';
@@ -246,10 +246,9 @@ export class Engine {
         const dy = e.pos.y - this.player.pos.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < this.player.radius + e.radius + 10) {
-          const alienDef = ALIEN_DEFS[this.player.currentAlien];
-          e.health -= alienDef.specialAbility.damage;
+          e.health -= this.player.dashDamage;
           e.hitTimer = 0.15;
-          this.particles.spawnHit(e.pos, alienDef.color);
+          this.particles.spawnHit(e.pos, this.player.dashColor);
           if (e.health <= 0) killEnemy(e, this.player, this.particles, this.audio);
         }
       }

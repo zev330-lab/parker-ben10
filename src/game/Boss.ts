@@ -53,7 +53,7 @@ export function updateBoss(
   const hpPct = boss.health / boss.maxHealth;
   let phaseIdx = 0;
   for (let i = def.phases.length - 1; i >= 0; i--) {
-    if (hpPct <= def.phases[i].healthThreshold) { phaseIdx = i; }
+    if (hpPct <= def.phases[i].healthThreshold) { phaseIdx = i; break; }
   }
   if (phaseIdx !== boss.phaseIndex) {
     boss.phaseIndex = phaseIdx;

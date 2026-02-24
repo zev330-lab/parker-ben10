@@ -1,5 +1,5 @@
 // ===== SCENE MANAGEMENT =====
-export type Scene = 'splash' | 'menu' | 'worldmap' | 'aliendex' | 'playing' | 'levelcomplete' | 'victory';
+export type Scene = 'splash' | 'menu' | 'gamepicker' | 'classic' | 'worldmap' | 'aliendex' | 'playing' | 'levelcomplete' | 'victory';
 
 // ===== VECTOR =====
 export interface Vec2 { x: number; y: number; }
@@ -138,6 +138,8 @@ export interface PlayerState extends Entity {
   specialCooldown: number;
   specialMaxCooldown: number;
   dashTimer: number;
+  dashDamage: number;
+  dashColor: string;
   shieldTimer: number;
   buffTimer: number;
   score: number;

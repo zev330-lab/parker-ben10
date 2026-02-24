@@ -294,15 +294,26 @@ export class Renderer {
     ctx.arc(r * 0.25, -r * 0.1, eyeSize, 0, Math.PI * 2);
     ctx.fill();
 
-    // Phase indicator lines
+    // Phase indicator ring (background)
     const hpPct = boss.health / boss.maxHealth;
     const segments = def.phases.length;
+    const gap = 0.06;
     for (let i = 0; i < segments; i++) {
       const a = (i / segments) * Math.PI * 2 - Math.PI / 2;
+      const segEnd = a + (1 / segments) * Math.PI * 2 - gap;
       ctx.beginPath();
-      ctx.arc(0, 0, r * 0.6, a, a + (1 / segments) * Math.PI * 2 * hpPct);
-      ctx.strokeStyle = i <= boss.phaseIndex ? def.accentColor : '#333';
+      ctx.arc(0, 0, r * 0.6, a, segEnd);
+      ctx.strokeStyle = '#333';
       ctx.lineWidth = 3;
+      ctx.stroke();
+    }
+    // Health overlay arc
+    if (hpPct > 0) {
+      const healthAngle = hpPct * Math.PI * 2;
+      ctx.beginPath();
+      ctx.arc(0, 0, r * 0.6, -Math.PI / 2, -Math.PI / 2 + healthAngle);
+      ctx.strokeStyle = def.accentColor;
+      ctx.lineWidth = 4;
       ctx.stroke();
     }
 
