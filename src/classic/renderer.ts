@@ -1318,6 +1318,14 @@ export class Renderer {
         ctx.font = 'bold 28px "DM Sans", sans-serif';
         ctx.fillText(`NEW ALIEN: ${alienStats.name.toUpperCase()}!`, cx, cy + 130);
       }
+
+      // Controls hint
+      if (timer > 1.5) {
+        ctx.fillStyle = '#888';
+        ctx.font = '18px "DM Sans", sans-serif';
+        ctx.fillText('\u25C0 \u25B6 Move  |  \u2B06 Jump  |  POW! Attack  |  \u23F3 Omnitrix', cx, cy + 180);
+      }
+
       ctx.globalAlpha = 1;
     }
   }

@@ -411,6 +411,200 @@ body {
 }
 .classic-game__back:active { background: #333; }
 
+/* ===== PAUSE MENU ===== */
+.pause-overlay {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn 0.2s ease-out;
+}
+.pause-menu {
+  background: #111; border: 2px solid #00e500;
+  border-radius: 20px; padding: 32px 40px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  min-width: 240px; box-shadow: 0 0 40px #00e50033;
+}
+.pause-menu__title {
+  font-size: 32px; font-weight: 900; color: #00e500;
+  text-shadow: 0 0 15px #00e50088; margin-bottom: 8px;
+  letter-spacing: 4px;
+}
+.pause-menu__btn {
+  width: 100%; padding: 14px 24px; border: 2px solid #333;
+  border-radius: 12px; background: #1a1a2e; color: #fff;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: transform 0.1s, border-color 0.2s;
+  letter-spacing: 2px; text-align: center;
+  font-family: inherit;
+}
+.pause-menu__btn:active { transform: scale(0.95); }
+.pause-menu__btn:hover { border-color: #00e500; }
+.pause-menu__btn--resume {
+  background: linear-gradient(180deg, #00e500, #009900);
+  color: #001a00; border-color: #00e500;
+}
+.pause-menu__btn--quit {
+  border-color: #ff4444; color: #ff4444;
+}
+.pause-menu__btn--quit:hover { border-color: #ff6666; background: #2a1a1a; }
+
+/* ===== PAUSE BUTTON (in-game) ===== */
+.pause-btn {
+  position: fixed; top: 12px; left: 12px; z-index: 30;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6); border: 2px solid #555;
+  color: #fff; font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.1s;
+}
+.pause-btn:active { transform: scale(0.9); }
+
+/* ===== CONTROLS HELP ===== */
+.controls-help {
+  width: 100%; text-align: center;
+}
+.controls-help__title {
+  font-size: 22px; font-weight: 800; color: #00e500;
+  margin-bottom: 16px; letter-spacing: 2px;
+}
+.controls-help__grid {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.controls-help__row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px 12px; border-radius: 8px; background: #1a1a2e;
+}
+.controls-help__key {
+  min-width: 110px; text-align: center;
+  font-size: 14px; font-weight: 700; color: #fff;
+  padding: 4px 8px; border-radius: 6px;
+  background: #333; border: 1px solid #555;
+  white-space: nowrap;
+}
+.controls-help__key--omni {
+  background: #003300; border-color: #00e500; color: #00e500;
+}
+.controls-help__label {
+  font-size: 14px; color: #aaa; text-align: left;
+}
+
+/* ===== MISSION BRIEFING ===== */
+.briefing {
+  position: fixed; inset: 0; z-index: 15;
+  background: linear-gradient(180deg, #0a0a1a 0%, #1a1a2e 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  animation: fadeIn 0.3s ease-out; padding: 20px;
+}
+.briefing__name {
+  font-size: 36px; font-weight: 900; color: #00e500;
+  text-shadow: 0 0 20px #00e50066; margin-bottom: 8px;
+}
+.briefing__desc {
+  font-size: 18px; color: #aaa; max-width: 500px;
+  text-align: center; margin-bottom: 16px; line-height: 1.4;
+}
+.briefing__difficulty {
+  font-size: 24px; margin-bottom: 20px;
+}
+.briefing__star--filled { color: #ffcc00; }
+.briefing__star--empty { color: #333; }
+.briefing__boss-badge {
+  display: inline-block; padding: 4px 16px;
+  background: #ff0044; color: #fff; border-radius: 20px;
+  font-size: 14px; font-weight: 800; letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.briefing__buttons {
+  display: flex; gap: 16px; margin-top: 8px;
+}
+.briefing__btn {
+  padding: 14px 36px; border: none; border-radius: 14px;
+  font-size: 18px; font-weight: 800; cursor: pointer;
+  transition: transform 0.1s; letter-spacing: 2px;
+  font-family: inherit;
+}
+.briefing__btn:active { transform: scale(0.92); }
+.briefing__btn--start {
+  background: linear-gradient(180deg, #00e500, #009900);
+  color: #001a00; box-shadow: 0 4px 20px #00e50066;
+}
+.briefing__btn--controls {
+  background: #1a1a2e; border: 2px solid #333; color: #aaa;
+}
+
+/* ===== CONTROLS OVERLAY (Classic intro) ===== */
+.controls-toast {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 30; background: rgba(0, 0, 0, 0.85);
+  border: 2px solid #00e500; border-radius: 14px;
+  padding: 12px 24px; pointer-events: none;
+  animation: fadeIn 0.3s ease-out;
+  white-space: nowrap;
+}
+.controls-toast__text {
+  font-size: 14px; color: #aaa; font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ===== WORLD MAP ENHANCEMENTS ===== */
+.mission-node__info {
+  display: flex; flex-direction: column; align-items: flex-start;
+  flex: 1; min-width: 0;
+}
+.mission-node__difficulty {
+  font-size: 12px; color: #ffcc00; margin-top: 2px;
+}
+.mission-node__desc {
+  font-size: 11px; color: #666; margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 130px;
+}
+.mission-node__badge {
+  display: inline-block; padding: 1px 6px;
+  background: #ff0044; color: #fff; border-radius: 4px;
+  font-size: 9px; font-weight: 800; letter-spacing: 1px;
+  margin-left: 6px; vertical-align: middle;
+}
+.mission-node__lock {
+  font-size: 16px; color: #555;
+}
+.mission-node__right {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+
+/* ===== GAME PICKER ENHANCEMENTS ===== */
+.game-picker__card-full-desc {
+  font-size: 12px; color: #666; line-height: 1.4;
+  max-width: 220px;
+}
+.game-picker__how-to-play {
+  font-size: 12px; color: #00e500; cursor: pointer;
+  background: none; border: 1px solid #00e50044;
+  border-radius: 8px; padding: 4px 12px;
+  font-weight: 600; font-family: inherit;
+  transition: border-color 0.2s;
+}
+.game-picker__how-to-play:hover { border-color: #00e500; }
+.game-picker__controls-overlay {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn 0.2s;
+}
+.game-picker__controls-card {
+  background: #111; border: 2px solid #00e500;
+  border-radius: 20px; padding: 28px 36px;
+  max-width: 400px; width: 90%;
+}
+.game-picker__controls-close {
+  margin-top: 16px; width: 100%;
+  padding: 10px; border: 2px solid #333;
+  border-radius: 10px; background: #1a1a2e; color: #fff;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: inherit;
+}
+
 /* ===== UTILITY ===== */
 .mt-4 { margin-top: 16px; }
 .text-center { text-align: center; }

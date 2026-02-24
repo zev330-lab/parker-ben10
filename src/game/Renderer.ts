@@ -469,10 +469,10 @@ export class Renderer {
     ctx.fillText('ATK', atkX, atkY);
 
     // Special button (above attack)
-    const spcX = w - 140;
+    const spcX = w - 145;
     const spcY = h - 75;
     ctx.beginPath();
-    ctx.arc(spcX, spcY, 30, 0, Math.PI * 2);
+    ctx.arc(spcX, spcY, 35, 0, Math.PI * 2);
     const canUse = specialCooldownPct <= 0;
     ctx.fillStyle = canUse ? 'rgba(0,229,0,0.35)' : 'rgba(100,100,100,0.25)';
     ctx.fill();
@@ -483,20 +483,20 @@ export class Renderer {
     if (specialCooldownPct > 0) {
       ctx.beginPath();
       ctx.moveTo(spcX, spcY);
-      ctx.arc(spcX, spcY, 30, -Math.PI / 2, -Math.PI / 2 + (1 - specialCooldownPct) * Math.PI * 2);
+      ctx.arc(spcX, spcY, 35, -Math.PI / 2, -Math.PI / 2 + (1 - specialCooldownPct) * Math.PI * 2);
       ctx.closePath();
       ctx.fillStyle = 'rgba(0,229,0,0.15)';
       ctx.fill();
     }
     ctx.fillStyle = '#fff';
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = 'bold 14px sans-serif';
     ctx.fillText('SPL', spcX, spcY);
 
     // Omnitrix button (top-right)
     const omniX = w - 45;
     const omniY = 45;
     ctx.beginPath();
-    ctx.arc(omniX, omniY, 22, 0, Math.PI * 2);
+    ctx.arc(omniX, omniY, 28, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(0,229,0,0.3)';
     ctx.fill();
     ctx.strokeStyle = 'rgba(0,229,0,0.7)';
@@ -506,19 +506,19 @@ export class Renderer {
     ctx.strokeStyle = '#fff';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(omniX - 7, omniY - 9);
-    ctx.lineTo(omniX + 7, omniY - 9);
+    ctx.moveTo(omniX - 9, omniY - 12);
+    ctx.lineTo(omniX + 9, omniY - 12);
     ctx.lineTo(omniX, omniY);
-    ctx.lineTo(omniX + 7, omniY + 9);
-    ctx.lineTo(omniX - 7, omniY + 9);
+    ctx.lineTo(omniX + 9, omniY + 12);
+    ctx.lineTo(omniX - 9, omniY + 12);
     ctx.lineTo(omniX, omniY);
     ctx.closePath();
     ctx.stroke();
 
     return {
       attack: { x: atkX - 40, y: atkY - 40, w: 80, h: 80 },
-      special: { x: spcX - 30, y: spcY - 30, w: 60, h: 60 },
-      omnitrix: { x: omniX - 22, y: omniY - 22, w: 44, h: 44 },
+      special: { x: spcX - 35, y: spcY - 35, w: 70, h: 70 },
+      omnitrix: { x: omniX - 28, y: omniY - 28, w: 56, h: 56 },
     };
   }
 }

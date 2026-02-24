@@ -36,8 +36,8 @@ export class Input {
 
   // Button positions (set by GameView)
   attackBtnRect = { x: 0, y: 0, w: 90, h: 90 };
-  specialBtnRect = { x: 0, y: 0, w: 70, h: 70 };
-  omnitrixBtnRect = { x: 0, y: 0, w: 50, h: 50 };
+  specialBtnRect = { x: 0, y: 0, w: 80, h: 80 };
+  omnitrixBtnRect = { x: 0, y: 0, w: 64, h: 64 };
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;

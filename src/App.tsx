@@ -34,6 +34,7 @@ function App() {
   const [lastScore, setLastScore] = useState(0);
   const [lastStars, setLastStars] = useState(0);
   const [lastUnlocked, setLastUnlocked] = useState<AlienId[]>([]);
+  const [gameKey, setGameKey] = useState(0);
   const saveRef = useRef(save);
   saveRef.current = save;
 
@@ -113,7 +114,10 @@ function App() {
   }, [activeMission, goWorldMap, startMission]);
 
   const retryMission = useCallback(() => {
-    if (activeMission) startMission(activeMission);
+    if (activeMission) {
+      setGameKey(k => k + 1);
+      startMission(activeMission);
+    }
   }, [activeMission, startMission]);
 
   let content: React.ReactNode = null;
@@ -139,9 +143,12 @@ function App() {
     case 'playing':
       content = activeMission ? (
         <GameView
+          key={activeMission.id + '-' + gameKey}
           mission={activeMission}
           save={save}
           onLevelComplete={onLevelComplete}
+          onQuit={goGamePicker}
+          onRestart={retryMission}
         />
       ) : null;
       break;

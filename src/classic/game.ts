@@ -21,6 +21,7 @@ export class Game {
   private renderer: Renderer;
   private input: InputManager;
   private running = false;
+  private paused = false;
   private rafId = 0;
 
   // State
@@ -96,7 +97,9 @@ export class Game {
       lastTime = now;
 
       this.resize();
-      this.update(dt);
+      if (!this.paused) {
+        this.update(dt);
+      }
       this.render();
       this.rafId = requestAnimationFrame(loop);
     };
@@ -108,6 +111,19 @@ export class Game {
     this.running = false;
     cancelAnimationFrame(this.rafId);
     this.input.destroy();
+  }
+
+  pause() {
+    this.paused = true;
+  }
+
+  resume() {
+    this.paused = false;
+  }
+
+  restart() {
+    this.paused = false;
+    this.changeState(GameState.SPLASH);
   }
 
   private resize() {

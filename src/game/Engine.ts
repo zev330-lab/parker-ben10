@@ -89,8 +89,8 @@ export class Engine {
     const ch = this.canvas.height;
     this.input.setButtonRects(
       { x: cw - 120, y: ch - 120, w: 80, h: 80 },
-      { x: cw - 170, y: ch - 105, w: 60, h: 60 },
-      { x: cw - 67, y: 23, w: 44, h: 44 },
+      { x: cw - 180, y: ch - 110, w: 70, h: 70 },
+      { x: cw - 72, y: 17, w: 56, h: 56 },
     );
   };
 

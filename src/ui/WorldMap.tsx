@@ -53,13 +53,32 @@ export function WorldMap({ save, onBack, onSelectMission }: Props) {
                       className={cls}
                       onClick={() => unlocked && onSelectMission(mission)}
                     >
-                      <div className="mission-node__name">{mission.name}</div>
-                      <div className="mission-node__stars">
-                        {[1, 2, 3].map(s => (
-                          <span key={s} className={`star ${s <= stars ? 'star--filled' : 'star--empty'}`}>
-                            &#9733;
-                          </span>
-                        ))}
+                      <div className="mission-node__info">
+                        <div className="mission-node__name">
+                          {mission.name}
+                          {mission.isBoss && <span className="mission-node__badge">BOSS</span>}
+                        </div>
+                        <div className="mission-node__difficulty">
+                          {[1, 2, 3].map(s => (
+                            <span key={s}>{s <= mission.difficulty ? '\u2605' : '\u2606'}</span>
+                          ))}
+                        </div>
+                        {unlocked && (
+                          <div className="mission-node__desc">{mission.description}</div>
+                        )}
+                      </div>
+                      <div className="mission-node__right">
+                        {!unlocked ? (
+                          <div className="mission-node__lock">{'\uD83D\uDD12'}</div>
+                        ) : (
+                          <div className="mission-node__stars">
+                            {[1, 2, 3].map(s => (
+                              <span key={s} className={`star ${s <= stars ? 'star--filled' : 'star--empty'}`}>
+                                &#9733;
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   );

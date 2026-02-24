@@ -102,6 +102,8 @@ export interface WaveDef {
 export interface MissionDef {
   id: string;
   name: string;
+  description: string;
+  difficulty: 1 | 2 | 3;
   worldId: WorldId;
   missionIndex: number;
   isBoss: boolean;

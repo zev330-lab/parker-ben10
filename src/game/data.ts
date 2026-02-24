@@ -190,21 +190,21 @@ export const WORLDS: WorldDef[] = [
   {
     id: 'bellwood', name: 'Bellwood City', color: '#3949ab',
     missions: [
-      { id: 'bellwood_0', name: 'City Park', worldId: 'bellwood', missionIndex: 0, isBoss: false, arenaRadius: 320, background: 'bellwood', unlockAliens: ['heatblast'],
+      { id: 'bellwood_0', name: 'City Park', description: 'Robots are attacking the park! Clear them out with your fireballs.', difficulty: 1, worldId: 'bellwood', missionIndex: 0, isBoss: false, arenaRadius: 320, background: 'bellwood', unlockAliens: ['heatblast'],
         waves: makeWaves([
           { enemies: [{ type: 'robot', count: 3 }], delay: 1 },
           { enemies: [{ type: 'robot', count: 3 }, { type: 'drone', count: 2 }], delay: 2 },
           { enemies: [{ type: 'robot', count: 4 }, { type: 'drone', count: 2 }], delay: 2 },
         ]),
       },
-      { id: 'bellwood_1', name: 'Downtown', worldId: 'bellwood', missionIndex: 1, isBoss: false, arenaRadius: 340, background: 'bellwood', unlockAliens: ['fourarms'],
+      { id: 'bellwood_1', name: 'Downtown', description: 'The invasion has spread downtown. Chargers join the fight!', difficulty: 1, worldId: 'bellwood', missionIndex: 1, isBoss: false, arenaRadius: 340, background: 'bellwood', unlockAliens: ['fourarms'],
         waves: makeWaves([
           { enemies: [{ type: 'robot', count: 4 }, { type: 'drone', count: 1 }], delay: 1 },
           { enemies: [{ type: 'drone', count: 3 }, { type: 'robot', count: 2 }], delay: 2 },
           { enemies: [{ type: 'robot', count: 3 }, { type: 'drone', count: 3 }, { type: 'charger', count: 1 }], delay: 2 },
         ]),
       },
-      { id: 'bellwood_2', name: 'Rooftops', worldId: 'bellwood', missionIndex: 2, isBoss: false, arenaRadius: 300, background: 'bellwood', unlockAliens: [],
+      { id: 'bellwood_2', name: 'Rooftops', description: 'Battle drones and robots on the city rooftops. Watch out for swarms!', difficulty: 1, worldId: 'bellwood', missionIndex: 2, isBoss: false, arenaRadius: 300, background: 'bellwood', unlockAliens: [],
         waves: makeWaves([
           { enemies: [{ type: 'drone', count: 4 }], delay: 1 },
           { enemies: [{ type: 'robot', count: 3 }, { type: 'drone', count: 3 }], delay: 2 },
@@ -212,7 +212,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'robot', count: 4 }, { type: 'drone', count: 3 }], delay: 2 },
         ]),
       },
-      { id: 'bellwood_3', name: 'Vilgax Mech', worldId: 'bellwood', missionIndex: 3, isBoss: true, arenaRadius: 380, background: 'bellwood', unlockAliens: [], boss: 'vilgax_mech',
+      { id: 'bellwood_3', name: 'Vilgax Mech', description: 'Vilgax has sent his mech! Defeat the boss to save Bellwood.', difficulty: 2, worldId: 'bellwood', missionIndex: 3, isBoss: true, arenaRadius: 380, background: 'bellwood', unlockAliens: [], boss: 'vilgax_mech',
         waves: makeWaves([
           { enemies: [{ type: 'robot', count: 3 }], delay: 1 },
           { enemies: [{ type: 'drone', count: 3 }], delay: 2 },
@@ -223,14 +223,14 @@ export const WORLDS: WorldDef[] = [
   {
     id: 'desert', name: 'Desert Wasteland', color: '#e65100',
     missions: [
-      { id: 'desert_0', name: 'Oasis Camp', worldId: 'desert', missionIndex: 0, isBoss: false, arenaRadius: 340, background: 'desert', unlockAliens: ['xlr8'],
+      { id: 'desert_0', name: 'Oasis Camp', description: 'Chargers patrol the desert oasis. Use speed to your advantage!', difficulty: 1, worldId: 'desert', missionIndex: 0, isBoss: false, arenaRadius: 340, background: 'desert', unlockAliens: ['xlr8'],
         waves: makeWaves([
           { enemies: [{ type: 'charger', count: 2 }, { type: 'robot', count: 2 }], delay: 1 },
           { enemies: [{ type: 'robot', count: 3 }, { type: 'drone', count: 3 }], delay: 2 },
           { enemies: [{ type: 'charger', count: 3 }, { type: 'drone', count: 2 }], delay: 2 },
         ]),
       },
-      { id: 'desert_1', name: 'Canyon Pass', worldId: 'desert', missionIndex: 1, isBoss: false, arenaRadius: 320, background: 'desert', unlockAliens: ['diamondhead'],
+      { id: 'desert_1', name: 'Canyon Pass', description: 'Turrets guard the canyon. Take cover and strike back!', difficulty: 2, worldId: 'desert', missionIndex: 1, isBoss: false, arenaRadius: 320, background: 'desert', unlockAliens: ['diamondhead'],
         waves: makeWaves([
           { enemies: [{ type: 'turret', count: 2 }, { type: 'robot', count: 3 }], delay: 1 },
           { enemies: [{ type: 'charger', count: 3 }, { type: 'drone', count: 2 }], delay: 2 },
@@ -238,7 +238,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'drone', count: 4 }, { type: 'robot', count: 3 }], delay: 2 },
         ]),
       },
-      { id: 'desert_2', name: 'Sandstorm', worldId: 'desert', missionIndex: 2, isBoss: false, arenaRadius: 350, background: 'desert', unlockAliens: [],
+      { id: 'desert_2', name: 'Sandstorm', description: 'A sandstorm brings waves of enemies from every direction.', difficulty: 2, worldId: 'desert', missionIndex: 2, isBoss: false, arenaRadius: 350, background: 'desert', unlockAliens: [],
         waves: makeWaves([
           { enemies: [{ type: 'charger', count: 3 }, { type: 'robot', count: 3 }], delay: 1 },
           { enemies: [{ type: 'turret', count: 3 }, { type: 'drone', count: 3 }], delay: 2 },
@@ -246,7 +246,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'turret', count: 2 }, { type: 'drone', count: 4 }, { type: 'charger', count: 2 }], delay: 2 },
         ]),
       },
-      { id: 'desert_3', name: 'Sand Worm Lair', worldId: 'desert', missionIndex: 3, isBoss: true, arenaRadius: 400, background: 'desert', unlockAliens: [], boss: 'sand_worm',
+      { id: 'desert_3', name: 'Sand Worm Lair', description: 'The Sand Worm lurks below. Dodge its charges and strike when it surfaces!', difficulty: 2, worldId: 'desert', missionIndex: 3, isBoss: true, arenaRadius: 400, background: 'desert', unlockAliens: [], boss: 'sand_worm',
         waves: makeWaves([
           { enemies: [{ type: 'charger', count: 3 }], delay: 1 },
           { enemies: [{ type: 'robot', count: 3 }, { type: 'drone', count: 2 }], delay: 2 },
@@ -257,7 +257,7 @@ export const WORLDS: WorldDef[] = [
   {
     id: 'shadow', name: 'Shadow Forest', color: '#2e7d32',
     missions: [
-      { id: 'shadow_0', name: 'Dark Clearing', worldId: 'shadow', missionIndex: 0, isBoss: false, arenaRadius: 330, background: 'shadow', unlockAliens: ['ghostfreak'],
+      { id: 'shadow_0', name: 'Dark Clearing', description: 'Strange creatures lurk in the shadowy clearing. Stay alert!', difficulty: 2, worldId: 'shadow', missionIndex: 0, isBoss: false, arenaRadius: 330, background: 'shadow', unlockAliens: ['ghostfreak'],
         waves: makeWaves([
           { enemies: [{ type: 'drone', count: 3 }, { type: 'robot', count: 2 }], delay: 1 },
           { enemies: [{ type: 'charger', count: 2 }, { type: 'drone', count: 3 }], delay: 2 },
@@ -265,7 +265,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'charger', count: 3 }, { type: 'drone', count: 3 }], delay: 2 },
         ]),
       },
-      { id: 'shadow_1', name: 'Mushroom Grove', worldId: 'shadow', missionIndex: 1, isBoss: false, arenaRadius: 340, background: 'shadow', unlockAliens: ['wildmutt'],
+      { id: 'shadow_1', name: 'Mushroom Grove', description: 'Turrets and chargers hide among the giant mushrooms.', difficulty: 2, worldId: 'shadow', missionIndex: 1, isBoss: false, arenaRadius: 340, background: 'shadow', unlockAliens: ['wildmutt'],
         waves: makeWaves([
           { enemies: [{ type: 'charger', count: 3 }, { type: 'turret', count: 2 }], delay: 1 },
           { enemies: [{ type: 'drone', count: 4 }, { type: 'robot', count: 3 }], delay: 2 },
@@ -273,7 +273,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'robot', count: 4 }, { type: 'drone', count: 4 }], delay: 2 },
         ]),
       },
-      { id: 'shadow_2', name: 'Ancient Ruins', worldId: 'shadow', missionIndex: 2, isBoss: false, arenaRadius: 350, background: 'shadow', unlockAliens: [],
+      { id: 'shadow_2', name: 'Ancient Ruins', description: 'Fight through ancient ruins swarming with all enemy types.', difficulty: 2, worldId: 'shadow', missionIndex: 2, isBoss: false, arenaRadius: 350, background: 'shadow', unlockAliens: [],
         waves: makeWaves([
           { enemies: [{ type: 'turret', count: 3 }, { type: 'robot', count: 3 }], delay: 1 },
           { enemies: [{ type: 'charger', count: 4 }, { type: 'drone', count: 3 }], delay: 2 },
@@ -281,7 +281,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'drone', count: 5 }, { type: 'charger', count: 3 }], delay: 2 },
         ]),
       },
-      { id: 'shadow_3', name: 'Shadow Beast Den', worldId: 'shadow', missionIndex: 3, isBoss: true, arenaRadius: 380, background: 'shadow', unlockAliens: [], boss: 'shadow_beast',
+      { id: 'shadow_3', name: 'Shadow Beast Den', description: 'Face the Shadow Beast in its den. It summons minions and fires spirals!', difficulty: 3, worldId: 'shadow', missionIndex: 3, isBoss: true, arenaRadius: 380, background: 'shadow', unlockAliens: [], boss: 'shadow_beast',
         waves: makeWaves([
           { enemies: [{ type: 'drone', count: 4 }], delay: 1 },
           { enemies: [{ type: 'charger', count: 3 }, { type: 'robot', count: 2 }], delay: 2 },
@@ -292,7 +292,7 @@ export const WORLDS: WorldDef[] = [
   {
     id: 'ocean', name: 'Deep Ocean', color: '#006688',
     missions: [
-      { id: 'ocean_0', name: 'Coral Reef', worldId: 'ocean', missionIndex: 0, isBoss: false, arenaRadius: 340, background: 'ocean', unlockAliens: ['stinkfly'],
+      { id: 'ocean_0', name: 'Coral Reef', description: 'Drones and turrets patrol the reef. Keep moving to survive!', difficulty: 2, worldId: 'ocean', missionIndex: 0, isBoss: false, arenaRadius: 340, background: 'ocean', unlockAliens: ['stinkfly'],
         waves: makeWaves([
           { enemies: [{ type: 'drone', count: 4 }, { type: 'robot', count: 2 }], delay: 1 },
           { enemies: [{ type: 'turret', count: 2 }, { type: 'charger', count: 3 }], delay: 2 },
@@ -300,7 +300,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'charger', count: 3 }, { type: 'turret', count: 2 }, { type: 'drone', count: 2 }], delay: 2 },
         ]),
       },
-      { id: 'ocean_1', name: 'Sunken Ship', worldId: 'ocean', missionIndex: 1, isBoss: false, arenaRadius: 350, background: 'ocean', unlockAliens: ['ripjaws'],
+      { id: 'ocean_1', name: 'Sunken Ship', description: 'Explore the sunken ship, but heavy resistance awaits inside.', difficulty: 2, worldId: 'ocean', missionIndex: 1, isBoss: false, arenaRadius: 350, background: 'ocean', unlockAliens: ['ripjaws'],
         waves: makeWaves([
           { enemies: [{ type: 'turret', count: 3 }, { type: 'drone', count: 3 }], delay: 1 },
           { enemies: [{ type: 'charger', count: 4 }, { type: 'robot', count: 3 }], delay: 2 },
@@ -308,7 +308,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'robot', count: 5 }, { type: 'charger', count: 3 }], delay: 2 },
         ]),
       },
-      { id: 'ocean_2', name: 'Abyssal Trench', worldId: 'ocean', missionIndex: 2, isBoss: false, arenaRadius: 360, background: 'ocean', unlockAliens: [],
+      { id: 'ocean_2', name: 'Abyssal Trench', description: 'The deepest trench holds the fiercest enemies. Five waves of chaos!', difficulty: 3, worldId: 'ocean', missionIndex: 2, isBoss: false, arenaRadius: 360, background: 'ocean', unlockAliens: [],
         waves: makeWaves([
           { enemies: [{ type: 'charger', count: 4 }, { type: 'turret', count: 3 }], delay: 1 },
           { enemies: [{ type: 'drone', count: 5 }, { type: 'robot', count: 3 }], delay: 2 },
@@ -317,7 +317,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'robot', count: 5 }, { type: 'turret', count: 3 }], delay: 2 },
         ]),
       },
-      { id: 'ocean_3', name: 'Kraken Depths', worldId: 'ocean', missionIndex: 3, isBoss: true, arenaRadius: 420, background: 'ocean', unlockAliens: [], boss: 'kraken',
+      { id: 'ocean_3', name: 'Kraken Depths', description: 'The Kraken has three phases! Dodge spirals and AOE attacks.', difficulty: 3, worldId: 'ocean', missionIndex: 3, isBoss: true, arenaRadius: 420, background: 'ocean', unlockAliens: [], boss: 'kraken',
         waves: makeWaves([
           { enemies: [{ type: 'drone', count: 4 }, { type: 'robot', count: 3 }], delay: 1 },
           { enemies: [{ type: 'charger', count: 3 }, { type: 'turret', count: 2 }], delay: 2 },
@@ -328,7 +328,7 @@ export const WORLDS: WorldDef[] = [
   {
     id: 'vilgax', name: "Vilgax's Domain", color: '#4a148c',
     missions: [
-      { id: 'vilgax_0', name: 'Outer Defenses', worldId: 'vilgax', missionIndex: 0, isBoss: false, arenaRadius: 360, background: 'vilgax', unlockAliens: ['cannonbolt'],
+      { id: 'vilgax_0', name: 'Outer Defenses', description: 'Break through Vilgax\'s outer defense grid. Five intense waves!', difficulty: 3, worldId: 'vilgax', missionIndex: 0, isBoss: false, arenaRadius: 360, background: 'vilgax', unlockAliens: ['cannonbolt'],
         waves: makeWaves([
           { enemies: [{ type: 'turret', count: 3 }, { type: 'charger', count: 3 }], delay: 1 },
           { enemies: [{ type: 'robot', count: 4 }, { type: 'drone', count: 4 }], delay: 2 },
@@ -337,7 +337,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'turret', count: 3 }, { type: 'charger', count: 4 }], delay: 2 },
         ]),
       },
-      { id: 'vilgax_1', name: 'Command Center', worldId: 'vilgax', missionIndex: 1, isBoss: false, arenaRadius: 350, background: 'vilgax', unlockAliens: ['upgrade'],
+      { id: 'vilgax_1', name: 'Command Center', description: 'Infiltrate the command center. Every enemy type guards it.', difficulty: 3, worldId: 'vilgax', missionIndex: 1, isBoss: false, arenaRadius: 350, background: 'vilgax', unlockAliens: ['upgrade'],
         waves: makeWaves([
           { enemies: [{ type: 'charger', count: 4 }, { type: 'drone', count: 4 }], delay: 1 },
           { enemies: [{ type: 'turret', count: 4 }, { type: 'robot', count: 4 }], delay: 2 },
@@ -346,7 +346,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'drone', count: 5 }, { type: 'charger', count: 4 }], delay: 2 },
         ]),
       },
-      { id: 'vilgax_2', name: 'Throne Room', worldId: 'vilgax', missionIndex: 2, isBoss: false, arenaRadius: 370, background: 'vilgax', unlockAliens: [],
+      { id: 'vilgax_2', name: 'Throne Room', description: 'The toughest non-boss mission. Massive enemy waves in the throne room.', difficulty: 3, worldId: 'vilgax', missionIndex: 2, isBoss: false, arenaRadius: 370, background: 'vilgax', unlockAliens: [],
         waves: makeWaves([
           { enemies: [{ type: 'turret', count: 4 }, { type: 'charger', count: 4 }], delay: 1 },
           { enemies: [{ type: 'robot', count: 5 }, { type: 'drone', count: 4 }], delay: 2 },
@@ -355,7 +355,7 @@ export const WORLDS: WorldDef[] = [
           { enemies: [{ type: 'charger', count: 5 }, { type: 'turret', count: 4 }, { type: 'robot', count: 3 }], delay: 2 },
         ]),
       },
-      { id: 'vilgax_3', name: 'Vilgax Supreme', worldId: 'vilgax', missionIndex: 3, isBoss: true, arenaRadius: 440, background: 'vilgax', unlockAliens: ['waybig'], boss: 'vilgax_supreme',
+      { id: 'vilgax_3', name: 'Vilgax Supreme', description: 'The final battle! Vilgax Supreme has 3 phases and summons minions.', difficulty: 3, worldId: 'vilgax', missionIndex: 3, isBoss: true, arenaRadius: 440, background: 'vilgax', unlockAliens: ['waybig'], boss: 'vilgax_supreme',
         waves: makeWaves([
           { enemies: [{ type: 'charger', count: 4 }, { type: 'drone', count: 4 }], delay: 1 },
           { enemies: [{ type: 'robot', count: 4 }, { type: 'turret', count: 3 }], delay: 2 },
